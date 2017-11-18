@@ -24,4 +24,18 @@ public class PrescriptionStore extends Store<Prescription> {
     Prescription newItem() {
         return new Prescription();
     }
+
+    public static class ConsultationFilter implements Filter<Prescription> {
+
+        private int consultationId;
+
+        public ConsultationFilter(int consultationId) {
+            this.consultationId = consultationId;
+        }
+
+        @Override
+        public boolean accept(Prescription prescription) {
+            return prescription.getConsultationId() == consultationId;
+        }
+    }
 }
