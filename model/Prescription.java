@@ -1,5 +1,7 @@
 package org.hackathon.common.model;
 
+import org.hackathon.common.store.DrugStore;
+
 import java.util.Date;
 
 /**
@@ -11,7 +13,7 @@ public class Prescription extends Entity {
     private int consultationId;
     private Date startDate;
     private Date endDate;
-    private String quantity;
+    private int quantity;
     private String frequency;
 
     public int getDrugId() {
@@ -46,11 +48,11 @@ public class Prescription extends Entity {
         this.endDate = endDate;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -60,5 +62,9 @@ public class Prescription extends Entity {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public Drug getDrug() {
+        return DrugStore.getInstance().get(drugId);
     }
 }
