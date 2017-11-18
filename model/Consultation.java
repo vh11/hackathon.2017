@@ -11,6 +11,7 @@ import java.util.Date;
 public class Consultation extends Entity {
 
     private int patientId;
+    private String description;
     private Date date;
     private long duration;
     private String comments;
@@ -21,6 +22,14 @@ public class Consultation extends Entity {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getDate() {
