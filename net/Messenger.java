@@ -78,6 +78,7 @@ public class Messenger extends Observable implements Runnable {
                         UpdateMessage messageResponse = gson.fromJson(response, UpdateMessage.class);
                         onResponse(messageResponse);
                     }
+                    messages.clear();
 
                     lock.notify();
                     lock.wait(DELAY);
