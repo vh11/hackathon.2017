@@ -1,5 +1,7 @@
 package org.hackathon.common.model;
 
+import com.google.gson.Gson;
+
 /**
  * Created by vh on 11/18/17.
  */
@@ -42,5 +44,12 @@ public class Entity {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+
+        return gson.toJson(this);
     }
 }

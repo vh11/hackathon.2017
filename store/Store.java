@@ -63,6 +63,7 @@ public abstract class Store<E extends Entity> {
     }
 
     public void add(E item) {
+        System.out.println("add: " + item);
         items.add(item);
     }
 
