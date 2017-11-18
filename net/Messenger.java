@@ -144,6 +144,16 @@ public class Messenger extends Observable implements Runnable {
                     cc.setDiagnosticId(c.getDiagnosticId());
                 }
             }
+            if (messageResponse.getConsultations() != null) {
+                for (Consultation c : messageResponse.getConsultations()) {
+                    Consultation cc = ConsultationStore.getInstance().get(c.getId());
+                    if (cc.getComments() == null && c.getComments() != null) {
+                        newStuff = true;
+                        cc.setComments(c.getComments());
+                        cc.setDiagnosticId(c.getDiagnosticId());
+                    }
+                }
+            }
 
             if (newStuff) {
                 setChanged();
