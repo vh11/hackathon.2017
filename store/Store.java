@@ -41,9 +41,8 @@ public abstract class Store<E extends Entity> {
         if (items != null) {
             for (E item : items) {
                 item.setId(counter.incrementAndGet());
+                add(item);
             }
-
-            this.items.addAll(items);
         }
     }
 
