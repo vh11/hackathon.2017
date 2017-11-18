@@ -100,6 +100,8 @@ public class Messenger extends Observable implements Runnable {
 
             newStuff = PatientStore.getInstance().update(messageResponse.getPatients()).size() != 0;
             newStuff |= DoctorStore.getInstance().update(messageResponse.getDoctors()).size() != 0;
+            newStuff |= RegionStore.getInstance().update(messageResponse.getRegions()).size() != 0;
+            newStuff |= DiagnosticStore.getInstance().update(messageResponse.getDiagnostics()).size() != 0;
             newStuff |= DrugStore.getInstance().update(messageResponse.getDrugs()).size() != 0;
             newStuff |= ConsultationStore.getInstance().update(messageResponse.getConsultations()).size() != 0;
             newStuff |= PrescriptionStore.getInstance().update(messageResponse.getPrescriptions()).size() != 0;
@@ -162,6 +164,7 @@ public class Messenger extends Observable implements Runnable {
 
         private List<Patient> patients;
         private List<Doctor> doctors;
+        private List<Region> regions;
         private List<Diagnostic> diagnostics;
         private List<Drug> drugs;
         private List<Consultation> consultations;
@@ -181,6 +184,14 @@ public class Messenger extends Observable implements Runnable {
 
         public void setDoctors(List<Doctor> doctors) {
             this.doctors = doctors;
+        }
+
+        public List<Region> getRegions() {
+            return regions;
+        }
+
+        public void setRegions(List<Region> regions) {
+            this.regions = regions;
         }
 
         public List<Diagnostic> getDiagnostics() {

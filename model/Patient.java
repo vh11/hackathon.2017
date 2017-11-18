@@ -1,5 +1,8 @@
 package org.hackathon.common.model;
 
+import org.hackathon.common.store.DoctorStore;
+import org.hackathon.common.store.PatientStore;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -114,6 +117,10 @@ public class Patient extends Entity {
         setAddress(parts[7].trim());
         setPhone(parts[8].trim());
         setDoctorId(Integer.parseInt(parts[9].trim()));
+    }
+
+    public Doctor getDoctor() {
+        return DoctorStore.getInstance().get(getDoctorId());
     }
 
 }

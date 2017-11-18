@@ -12,16 +12,16 @@ public class PrescriptionStore extends Store<Prescription> {
     private PrescriptionStore() {
     }
 
-    @Override
-    Prescription newItem() {
-        return new Prescription();
-    }
-
     public static synchronized PrescriptionStore getInstance() {
         if (instance == null) {
             instance = new PrescriptionStore();
         }
 
         return instance;
+    }
+
+    @Override
+    Prescription newItem() {
+        return new Prescription();
     }
 }
