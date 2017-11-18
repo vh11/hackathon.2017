@@ -1,5 +1,6 @@
 package org.hackathon.common.model;
 
+import org.hackathon.common.store.DiagnosticStore;
 import org.hackathon.common.store.PatientStore;
 
 /**
@@ -57,4 +58,9 @@ public class Consultation extends Entity {
     public Patient getPatient() {
         return PatientStore.getInstance().get(getPatientId());
     }
+
+    public Diagnostic getDiagnostic() {
+        return DiagnosticStore.getInstance().get(getDiagnosticId());
+    }
+
 }
