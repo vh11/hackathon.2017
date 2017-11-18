@@ -11,6 +11,7 @@ public class Consultation extends Entity {
     private int patientId;
     private String description;
     private long date;
+    private int diagnosticId;
     private String comments;
 
     public int getPatientId() {
@@ -35,6 +36,14 @@ public class Consultation extends Entity {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    public int getDiagnosticId() {
+        return diagnosticId;
+    }
+
+    public void setDiagnosticId(int diagnosticId) {
+        this.diagnosticId = diagnosticId;
     }
 
     public String getComments() {
