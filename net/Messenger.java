@@ -145,6 +145,7 @@ public class Messenger extends Observable implements Runnable {
             }
 
             if (newStuff) {
+                setChanged();
                 notifyObservers(messageResponse);
             }
         }
