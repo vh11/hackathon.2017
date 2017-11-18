@@ -88,7 +88,7 @@ public class Messenger extends Observable implements Runnable {
         Gson gson = new Gson();
 
         String body = gson.toJson(request);
-        String response = IOHelper.post(URL_MESSAGE, body);
+        String response = IOHelper.post(URL_AUTHENTICATE, body);
         AuthenticateResponse authenticateResponse = gson.fromJson(response, AuthenticateResponse.class);
 
         return authenticateResponse;
