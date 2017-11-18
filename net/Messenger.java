@@ -6,6 +6,7 @@ import org.hackathon.common.store.*;
 import org.hackathon.common.util.IOHelper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -27,6 +28,7 @@ public class Messenger extends Observable implements Runnable {
     private List<UpdateMessage> messages;
 
     private Messenger() {
+        messages = new ArrayList<>();
     }
 
     public static synchronized Messenger getInstance() {
