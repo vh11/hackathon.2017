@@ -15,8 +15,8 @@ import java.util.Observable;
 
 public class Messenger extends Observable implements Runnable {
 
-    private static final String URL_AUTHENTICATE = "http://192.168.115.226:8080/authenticate";
-    private static final String URL_MESSAGE = "http://192.168.115.226:8080/message";
+    private static final String URL_AUTHENTICATE = "http://192.168.1.80:8080/authenticate";
+    private static final String URL_MESSAGE = "http://192.168.1.80:8080/message";
 
     private static long DELAY = 1000;
 
