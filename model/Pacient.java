@@ -1,4 +1,4 @@
-package common.model;
+package org.hackathon.common.model;
 
 /**
  * Created by vh on 11/18/17.
