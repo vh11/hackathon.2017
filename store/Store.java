@@ -25,13 +25,15 @@ public abstract class Store<E extends Entity> {
 
     public List<E> update(List<E> items) {
         ArrayList<E> newItems = new ArrayList<>();
-        for (E item : items) {
-            if (this.items.contains(item)) {
-                newItems.add(item);
+        if (items != null) {
+            for (E item : items) {
+                if (this.items.contains(item)) {
+                    newItems.add(item);
+                }
             }
-        }
 
-        items.addAll(newItems);
+            items.addAll(newItems);
+        }
 
         return newItems;
     }

@@ -43,6 +43,14 @@ public class Messenger extends Observable implements Runnable {
         if (thread == null) {
             thread = new Thread(this);
             thread.start();
+
+            synchronized (lock) {
+                try {
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -71,6 +79,7 @@ public class Messenger extends Observable implements Runnable {
                         onResponse(messageResponse);
                     }
 
+                    lock.notify();
                     lock.wait(DELAY);
                 }
             } catch (Exception e) {
