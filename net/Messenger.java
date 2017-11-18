@@ -1,8 +1,21 @@
 package org.hackathon.common.net;
 
 import com.google.gson.Gson;
-import org.hackathon.common.model.*;
-import org.hackathon.common.store.*;
+
+import org.hackathon.common.model.Consultation;
+import org.hackathon.common.model.Diagnostic;
+import org.hackathon.common.model.Doctor;
+import org.hackathon.common.model.Drug;
+import org.hackathon.common.model.Patient;
+import org.hackathon.common.model.Prescription;
+import org.hackathon.common.model.Region;
+import org.hackathon.common.store.ConsultationStore;
+import org.hackathon.common.store.DiagnosticStore;
+import org.hackathon.common.store.DoctorStore;
+import org.hackathon.common.store.DrugStore;
+import org.hackathon.common.store.PatientStore;
+import org.hackathon.common.store.PrescriptionStore;
+import org.hackathon.common.store.RegionStore;
 import org.hackathon.common.util.IOHelper;
 
 import java.io.IOException;
@@ -122,6 +135,14 @@ public class Messenger extends Observable implements Runnable {
             newStuff |= DrugStore.getInstance().update(messageResponse.getDrugs()).size() != 0;
             newStuff |= ConsultationStore.getInstance().update(messageResponse.getConsultations()).size() != 0;
             newStuff |= PrescriptionStore.getInstance().update(messageResponse.getPrescriptions()).size() != 0;
+            if (messageResponse.getUpdatedConsultations() != null) {
+                newStuff = true;
+
+                for (Consultation c : messageResponse.getUpdatedConsultations()) {
+                    Consultation cc = ConsultationStore.getInstance().get(c.getId());
+                    cc.setComments(c.getComments());
+                }
+            }
 
             if (newStuff) {
                 notifyObservers(messageResponse);
@@ -185,6 +206,7 @@ public class Messenger extends Observable implements Runnable {
         private List<Diagnostic> diagnostics;
         private List<Drug> drugs;
         private List<Consultation> consultations;
+        private List<Consultation> updatedConsultations;
         private List<Prescription> prescriptions;
 
         public List<Patient> getPatients() {
@@ -233,6 +255,14 @@ public class Messenger extends Observable implements Runnable {
 
         public void setConsultations(List<Consultation> consultations) {
             this.consultations = consultations;
+        }
+
+        public List<Consultation> getUpdatedConsultations() {
+            return updatedConsultations;
+        }
+
+        public void setUpdatedConsultations(List<Consultation> updatedConsultations) {
+            this.updatedConsultations = updatedConsultations;
         }
 
         public List<Prescription> getPrescriptions() {
