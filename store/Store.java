@@ -54,7 +54,7 @@ public abstract class Store<E extends Entity> {
     public List<E> list(Filter<E> filter) {
         ArrayList<E> items = new ArrayList<>();
 
-        for (E item : this.items) {
+        for (E item : this.list()) {
             if (filter.accept(item)) {
                 items.add(item);
             }
