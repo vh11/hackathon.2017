@@ -39,4 +39,18 @@ public class PatientStore extends Store<Patient> {
             return code.equals(patient.getCode());
         }
     }
+
+    public static class DoctorFilter implements Filter<Patient> {
+
+        private int doctorId;
+
+        public DoctorFilter(int doctorId) {
+            this.doctorId = doctorId;
+        }
+
+        @Override
+        public boolean accept(Patient patient) {
+            return doctorId == patient.getDoctorId();
+        }
+    }
 }
