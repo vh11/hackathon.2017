@@ -1,12 +1,10 @@
 package org.hackathon.common.model;
 
 import org.hackathon.common.store.DoctorStore;
-import org.hackathon.common.store.PatientStore;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by vh on 11/18/17.
@@ -20,7 +18,7 @@ public class Patient extends Entity {
     private int doctorId;
     private String code;
     private String password;
-    private Date birthDate;
+    private long birthDate;
     private String firstName;
     private String lastName;
     private String phone;
@@ -51,11 +49,11 @@ public class Patient extends Entity {
         this.password = password;
     }
 
-    public Date getBirthDate() {
+    public long getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(long birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -107,7 +105,7 @@ public class Patient extends Entity {
         setPassword(parts[2].trim());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         try {
-            setBirthDate(df.parse(parts[3].trim()));
+            setBirthDate(df.parse(parts[3].trim()).getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }

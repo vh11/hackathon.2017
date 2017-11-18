@@ -92,6 +92,11 @@ public class Messenger extends Observable implements Runnable {
         synchronized (lock) {
             messages.add(message);
             lock.notify();
+            try {
+                lock.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

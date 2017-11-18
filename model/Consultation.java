@@ -2,8 +2,6 @@ package org.hackathon.common.model;
 
 import org.hackathon.common.store.PatientStore;
 
-import java.util.Date;
-
 /**
  * Created by vh on 11/18/17.
  */
@@ -12,7 +10,7 @@ public class Consultation extends Entity {
 
     private int patientId;
     private String description;
-    private Date date;
+    private long date;
     private long duration;
     private String comments;
 
@@ -32,11 +30,11 @@ public class Consultation extends Entity {
         this.description = description;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
