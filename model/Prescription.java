@@ -8,7 +8,7 @@ import java.util.Date;
 public class Prescription extends Entity {
 
     private int drugId;
-    private int patientId;
+    private int consultationId;
     private Date startDate;
     private Date endDate;
     private String quantity;
@@ -22,12 +22,12 @@ public class Prescription extends Entity {
         this.drugId = drugId;
     }
 
-    public int getPatientId() {
-        return patientId;
+    public int getConsultationId() {
+        return consultationId;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setConsultationId(int consultationId) {
+        this.consultationId = consultationId;
     }
 
     public Date getStartDate() {
