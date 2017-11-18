@@ -37,11 +37,13 @@ public abstract class Store<E extends Entity> {
     }
 
     public void insert(List<E> items) {
-        for (E item : items) {
-            item.setId(counter.incrementAndGet());
-        }
+        if (items != null) {
+            for (E item : items) {
+                item.setId(counter.incrementAndGet());
+            }
 
-        this.items.addAll(items);
+            this.items.addAll(items);
+        }
     }
 
     public List<E> list() {
