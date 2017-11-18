@@ -27,7 +27,7 @@ public abstract class Store<E extends Entity> {
         ArrayList<E> newItems = new ArrayList<>();
         if (items != null) {
             for (E item : items) {
-                if (this.items.contains(item)) {
+                if (!this.items.contains(item)) {
                     newItems.add(item);
                     add(item);
                 }
