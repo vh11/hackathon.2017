@@ -29,10 +29,9 @@ public abstract class Store<E extends Entity> {
             for (E item : items) {
                 if (this.items.contains(item)) {
                     newItems.add(item);
+                    add(item);
                 }
             }
-
-            items.addAll(newItems);
         }
 
         return newItems;
